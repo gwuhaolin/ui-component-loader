@@ -3,7 +3,9 @@
 [![Npm Downloads](http://img.shields.io/npm/dm/ui-component-loader.svg?style=flat-square)](https://www.npmjs.com/package/ui-component-loader)
 
 # ui-component-loader
-Modular UI component webpack loader, compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](https://github.com/ant-design/ant-design-mobile), and so on.
+Modular UI component loader for webpack, a good alternative for [babel-plugin-import](https://github.com/ant-design/babel-plugin-import).
+
+Compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](https://github.com/ant-design/ant-design-mobile), and so on.
 
 ### Example
 
@@ -31,10 +33,8 @@ module.exports = {
         test: /\.tsx?$/,
         use: ['ui-component-loader?lib=antd&style=css', 'awesome-typescript-loader']
       },
-      // ...  
     ]
   },
-  // ...  
 };
 ```
 
@@ -44,7 +44,7 @@ module.exports = {
 - style: should append style file to a component? value is relative path to style file.
 - camel2: should translate MyComponent to my-component, value is the join string. 
 
-## Diff with [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+## Diff with babel-plugin-import
 1. babel-plugin-import is a babel plugin, which means must be used in project with babel.
 But in some project, like project use TypeScript, ui-component-loader is useful.
 ui-component-loader can be used in any project with webpack.
