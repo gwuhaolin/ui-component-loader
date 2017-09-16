@@ -3,9 +3,9 @@
 [![Npm Downloads](http://img.shields.io/npm/dm/ui-component-loader.svg?style=flat-square)](https://www.npmjs.com/package/ui-component-loader)
 
 # ui-component-loader
-Modular UI component loader for webpack, compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](https://github.com/ant-design/ant-design-mobile), and so on.
+Modular UI component webpack loader, compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](https://github.com/ant-design/ant-design-mobile), and so on.
 
-## Example
+### Example
 
 | description | options | source | output |
 | --- | --- | --- | --- |
@@ -13,10 +13,10 @@ Modular UI component loader for webpack, compatible with [antd](https://github.c
 | replace many | `lib: 'antd'` | `import {Button,Icon} from 'antd'` | `import Button from 'antd/lib/Button' import Icon from 'antd/lib/Icon'` |
 | set libDir | `lib: 'antd', libDir: 'es'` | `import {Button} from 'antd'` | `import Button from 'antd/es/Button'` |
 | use style | `lib: 'antd', style: 'index.css'` | `import {Button} from 'antd'` | `import Button from 'antd/lib/Button' import 'antd/lib/Button/index.css'` |
-| translate camel | `lib: 'antd',camel2: '-'` | `import {MyComponent} from 'antd'` | `import MyComponent from 'antd/lib/my-component'` |
+| translate camel | `lib: 'antd', camel2: '-'` | `import {MyComponent} from 'antd'` | `import MyComponent from 'antd/lib/my-component'` |
 
   
-## Usage
+### Usage
 Install:
 ```bash
 npm install ui-component-loader --D
