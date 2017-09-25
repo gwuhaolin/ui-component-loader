@@ -19,9 +19,9 @@ Compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](
 
   
 ### Usage
-Install:
+Install by:
 ```bash
-npm install ui-component-loader --D
+npm install ui-component-loader -D
 ```
 
 Edit `webpack.config.js`:
@@ -31,8 +31,16 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ui-component-loader?lib=antd&style=style/index.css', 'ts-loader'],
-        include: path.resolve(__dirname,'node_modules/antd')
+        use: [
+          [
+            'ui-component-loader', {
+              'lib': 'antd',
+              'style': 'style/index.css',
+            }
+          ],
+          'ts-loader'
+        ],
+        include: path.resolve(__dirname, 'node_modules/antd')
       },
     ]
   },

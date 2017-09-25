@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const { replaceImport } = require('../lib/util');
+const {replaceImport} = require('../lib/util');
 
 describe('util.js#replaceImport', function () {
 
@@ -102,7 +102,7 @@ import 'antd/lib/Icon/index.css'
     },
   ];
 
-  testData.forEach(({ des, source, output, options }) => {
+  testData.forEach(({des, source, output, options}) => {
     it(des, function () {
       let realOutput = replaceImport(source, options);
       assert.equal(realOutput, output, `
