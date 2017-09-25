@@ -31,7 +31,8 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ui-component-loader?lib=antd&style=css', 'awesome-typescript-loader']
+        use: ['ui-component-loader?lib=antd&style=style/index.css', 'ts-loader'],
+        include: path.resolve(__dirname,'node_modules/antd')
       },
     ]
   },
@@ -39,14 +40,14 @@ module.exports = {
 ```
 
 ## Options
-- lib: library want to replace,value is name in npm.
-- libDir: library directory path which store will use code, default it `lib`  
-- style: should append style file to a component? value is relative path to style file.
-- camel2: should translate MyComponent to my-component, value is the join string. 
+- **lib**: library want to replace,value is name in npm.
+- **libDir**: library directory path which store will use code, default it `lib`  
+- **style**: should append style file to a component? value is relative path to style file.
+- **camel2**: should translate MyComponent to my-component, value is the join string. 
 
 ## Diff with babel-plugin-import
 1. babel-plugin-import is a babel plugin, which means must be used in project with babel.
-But in some project, like project use TypeScript, ui-component-loader is useful.
-ui-component-loader can be used in any project with webpack.
-2. ui-component-loader has better performance as it's implement by regular expression replace string, but babel-plugin-import base on AST.
+But in some project, like project use TypeScript, ui-component-loader is useful,
+ui-component-loader **can be used in any project with webpack**.
+2. ui-component-loader **has better performance ** as it's implement by regular expression replace string, but babel-plugin-import base on AST.
  
