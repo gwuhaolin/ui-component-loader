@@ -49,5 +49,5 @@ module.exports = {
 1. babel-plugin-import is a babel plugin, which means must be used in project with babel.
 But in some project, like project use TypeScript, ui-component-loader is useful,
 ui-component-loader **can be used in any project with webpack**.
-2. ui-component-loader **has better performance ** as it's implement by regular expression replace string, but babel-plugin-import base on AST.
+2. ui-component-loader **has better performance** as it's implement by regular expression replace string, but babel-plugin-import base on AST.
  
