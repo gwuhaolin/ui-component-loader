@@ -32,13 +32,14 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          [
-            'ui-component-loader', {
+          'ts-loader',
+          {
+            loader: 'ui-component-loader',
+            options: {
               'lib': 'antd',
               'style': 'style/index.css',
             }
-          ],
-          'ts-loader'
+          },
         ],
         include: path.resolve(__dirname, 'node_modules/antd')
       },
@@ -46,6 +47,7 @@ module.exports = {
   },
 };
 ```
+> The order of loaders has no require, but the source code pass to ui-component-loader must use ES6 module syntax.
 
 ## Options
 - **lib**: library want to replace,value is name in npm.
