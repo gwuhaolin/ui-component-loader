@@ -12,7 +12,6 @@
     "webpack": "*"
   },
   "devDependencies": {
-    "antd": "^2.13.4",
     "mocha": "^3.5.3"
   }
 }
