@@ -1,6 +1,6 @@
 {
   "name": "ui-component-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./lib/index.js",
   "engines": {
     "node": ">= 6.0.0"
@@ -12,6 +12,7 @@
     "webpack": "*"
   },
   "devDependencies": {
+    "antd": "^2.13.4",
     "mocha": "^3.5.3"
   }
 }

@@ -100,11 +100,22 @@ import 'antd/lib/Icon/index.css'
         camel2: '-'
       },
     },
+    {
+      des: '使用 camel2 转化大小写',
+      source: `import {Button} from 'antd'`,
+      output: `import Button from 'antd/lib/button'\n`,
+      options: {
+        lib: 'antd',
+        camel2: '-'
+      },
+    },
   ];
 
-  testData.forEach(({des, source, output, options}) => {
+  testData.forEach(({des, source, output, options = {}}) => {
     it(des, function () {
-      let realOutput = replaceImport(source, options);
+      let realOutput = replaceImport(source, Object.assign(options, {
+        existCheck: null
+      }));
       assert.equal(realOutput, output, `
         source=${source}
         options=${JSON.stringify(options)}

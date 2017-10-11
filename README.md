@@ -53,7 +53,8 @@ module.exports = {
 - **lib**: library want to replace,value is name in npm.
 - **libDir**: library directory path which store will use code, default it `lib`  
 - **style**: should append style file to a component? value is relative path to style file.
-- **camel2**: should translate MyComponent to my-component, value is the join string. 
+- **camel2**: should translate MyComponent to my-component, value is the join string.
+- **existCheck**: should check if import file exist, only import file when exits, default will check. To close this check set `existCheck=null`.
 
 ## Diff with babel-plugin-import
 1. babel-plugin-import is a babel plugin, which means must be used in project with babel.
