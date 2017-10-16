@@ -16,6 +16,7 @@ Compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](
 | set libDir | `lib: 'antd', libDir: 'es'` | `import {Button} from 'antd'` | `import Button from 'antd/es/Button'` |
 | use style | `lib: 'antd', style: 'index.css'` | `import {Button} from 'antd'` | `import Button from 'antd/lib/Button' import 'antd/lib/Button/index.css'` |
 | translate camel | `lib: 'antd', camel2: '-'` | `import {MyComponent} from 'antd'` | `import MyComponent from 'antd/lib/my-component'` |
+| componentDirMap | `lib: 'antd', camel2: '-',componentDirMap: {MyComponent: 'YourComponent'}` | `import {MyComponent} from 'antd'` | `import MyComponent from 'antd/lib/YourComponent'` |
 
   
 ### Usage
@@ -55,6 +56,7 @@ module.exports = {
 - **style**: should append style file to a component? value is relative path to style file.
 - **camel2**: should translate MyComponent to my-component, value is the join string.
 - **existCheck**: should check if import file exist, only import file when exits, default will check. To close this check set `existCheck=null`.
+- **componentDirMap**: a map to store Component Entry Dir in lib by ComponentName, it's structure should be `{ComponentName:ComponentDir}`,default is `{}`.
 
 ## Diff with babel-plugin-import
 1. babel-plugin-import is a babel plugin, which means must be used in project with babel.

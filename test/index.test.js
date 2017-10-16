@@ -22,7 +22,7 @@ describe('util.js#replaceImport', function () {
     {
       des: 'lib 命中,保留后面的;',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button'\n;`,
+      output: `import Button from 'antd/lib/Button';;`,
       options: {
         lib: 'antd'
       },
@@ -30,7 +30,7 @@ describe('util.js#replaceImport', function () {
     {
       des: 'lib 命中',
       source: `import {Button} from 'antd'`,
-      output: `import Button from 'antd/lib/Button'\n`,
+      output: `import Button from 'antd/lib/Button';`,
       options: {
         lib: 'antd'
       },
@@ -38,7 +38,7 @@ describe('util.js#replaceImport', function () {
     {
       des: '使用 libDir',
       source: `import {Button} from 'antd'`,
-      output: `import Button from 'antd/es/Button'\n`,
+      output: `import Button from 'antd/es/Button';`,
       options: {
         lib: 'antd',
         libDir: 'es',
@@ -47,7 +47,7 @@ describe('util.js#replaceImport', function () {
     {
       des: 'import 语句中间有很多空格',
       source: `import     {  Button} from    "antd"`,
-      output: `import Button from 'antd/lib/Button'\n`,
+      output: `import Button from 'antd/lib/Button';`,
       options: {
         lib: 'antd'
       },
@@ -55,7 +55,7 @@ describe('util.js#replaceImport', function () {
     {
       des: '导入多个 component',
       source: `import     {  Button,     Icon} from    "antd"`,
-      output: `import Button from 'antd/lib/Button'\nimport Icon from 'antd/lib/Icon'\n`,
+      output: `import Button from 'antd/lib/Button';import Icon from 'antd/lib/Icon';`,
       options: {
         lib: 'antd'
       },
@@ -63,7 +63,7 @@ describe('util.js#replaceImport', function () {
     {
       des: '使用 style',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button'\nimport 'antd/lib/Button/index.css'\n;`,
+      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/index.css';;`,
       options: {
         lib: 'antd',
         style: 'index.css'
@@ -71,12 +71,8 @@ describe('util.js#replaceImport', function () {
     },
     {
       des: '导入多个 component & 使用 style',
-      source: `import {Button,Icon} from 'antd';`,
-      output: `import Button from 'antd/lib/Button'
-import 'antd/lib/Button/index.css'
-import Icon from 'antd/lib/Icon'
-import 'antd/lib/Icon/index.css'
-;`,
+      source: `import {Button,Icon} from 'antd'`,
+      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/index.css';import Icon from 'antd/lib/Icon';import 'antd/lib/Icon/index.css';`,
       options: {
         lib: 'antd',
         style: 'index.css'
@@ -85,7 +81,7 @@ import 'antd/lib/Icon/index.css'
     {
       des: '使用 相对路径的 style',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button'\nimport 'antd/lib/Button/style/index.css'\n;`,
+      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/style/index.css';;`,
       options: {
         lib: 'antd',
         style: './style/index.css'
@@ -94,7 +90,7 @@ import 'antd/lib/Icon/index.css'
     {
       des: '使用 camel2 转化大小写',
       source: `import {MyComponent} from 'antd'`,
-      output: `import MyComponent from 'antd/lib/my-component'\n`,
+      output: `import MyComponent from 'antd/lib/my-component';`,
       options: {
         lib: 'antd',
         camel2: '-'
@@ -103,10 +99,22 @@ import 'antd/lib/Icon/index.css'
     {
       des: '使用 camel2 转化大小写',
       source: `import {Button} from 'antd'`,
-      output: `import Button from 'antd/lib/button'\n`,
+      output: `import Button from 'antd/lib/button';`,
       options: {
         lib: 'antd',
         camel2: '-'
+      },
+    },
+    {
+      des: '使用 componentDirMap 映射路径',
+      source: `import {MyComponent} from 'antd'`,
+      output: `import MyComponent from 'antd/lib/YourComponent';`,
+      options: {
+        lib: 'antd',
+        camel2: '-',
+        componentDirMap: {
+          MyComponent: 'YourComponent'
+        }
       },
     },
   ];
