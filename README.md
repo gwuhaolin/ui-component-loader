@@ -55,7 +55,7 @@ module.exports = {
 - **libDir**: library directory path which store will use code, default it `lib`  
 - **style**: should append style file to a component? value is relative path to style file.
 - **camel2**: should translate MyComponent to my-component, value is the join string.
-- **existCheck**: should check if import file exist, only import file when exits, default will check. To close this check set `existCheck=null`.
+- **existCheck**: should check if import file exist, only import file when exits, default will check. To close this check set existCheck to `(componentDirPath)=> true`.
 - **componentDirMap**: a map to store Component Entry Dir in lib by ComponentName, it's structure should be `{ComponentName:ComponentDir}`,default is `{}`.
 
 ## Diff with babel-plugin-import

@@ -122,7 +122,7 @@ describe('util.js#replaceImport', function () {
   testData.forEach(({des, source, output, options = {}}) => {
     it(des, function () {
       let realOutput = replaceImport(source, Object.assign(options, {
-        existCheck: null
+        existCheck: () => true,
       }));
       assert.equal(realOutput, output, `
         source=${source}
