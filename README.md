@@ -7,6 +7,10 @@ Modular UI component loader for webpack, a good alternative for [babel-plugin-im
 
 Compatible with [antd](https://github.com/ant-design/ant-design), [antd-mobile](https://github.com/ant-design/ant-design-mobile), and so on.
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/3bvxELAxnq8r4wheFyRkED8U/gwuhaolin/ui-component-loader'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/3bvxELAxnq8r4wheFyRkED8U/gwuhaolin/ui-component-loader.svg' />
+</a>
+
 ### Example
 
 | description | options | source | output |
