@@ -117,6 +117,18 @@ describe('util.js#replaceImport', function () {
         }
       },
     },
+    {
+      des: '支持组件换行',
+      source: `import {
+ DatePicker,
+ List,
+} from '@mtfe/mcashier-components'`,
+      output: `import DatePicker from '@mtfe/mcashier-components/es/DatePicker';import List from '@mtfe/mcashier-components/es/List';`,
+      options: {
+        lib: '@mtfe/mcashier-components',
+        libDir: 'es',
+      },
+    },
   ];
 
   testData.forEach(({des, source, output, options = {}}) => {
