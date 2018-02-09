@@ -117,6 +117,49 @@ describe('util.js#replaceImport', function () {
         }
       },
     },
+    {
+      des: '不能覆盖其它',
+      source: `import * as React from 'react';
+import {Component} from 'react';
+import {svgQRCode} from '@mtfe/mcashier-components/es/Icon/svgs';`,
+      output: `import * as React from 'react';
+import {Component} from 'react';
+import {svgQRCode} from '@mtfe/mcashier-components/es/Icon/svgs';`,
+      options: {
+        lib: '@mtfe/mcashier-components',
+        libDir: 'es',
+      },
+    },
+    {
+      des: '不能覆盖其它2',
+      source: `import * as React from 'react';
+import {Component} from 'react';
+import {svgQRCode} from '@mtfe/mcashier-components/es/Icon/svgs';
+import {Form} from '@mtfe/mcashier-components';
+import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
+      output: `import * as React from 'react';
+import {Component} from 'react';
+import {svgQRCode} from '@mtfe/mcashier-components/es/Icon/svgs';
+import Form from '@mtfe/mcashier-components/es/Form';;
+import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
+      options: {
+        lib: '@mtfe/mcashier-components',
+        libDir: 'es',
+      },
+    },
+
+    {
+      des: '支持组件换行',
+      source: `import {
+ DatePicker,
+ List,
+} from '@mtfe/mcashier-components'`,
+      output: `import DatePicker from '@mtfe/mcashier-components/es/DatePicker';import List from '@mtfe/mcashier-components/es/List';`,
+      options: {
+        lib: '@mtfe/mcashier-components',
+        libDir: 'es',
+      },
+    },
   ];
 
   testData.forEach(({des, source, output, options = {}}) => {
