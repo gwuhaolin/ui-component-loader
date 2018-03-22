@@ -42,7 +42,8 @@ module.exports = {
             }
           },
         ],
-        include: path.resolve(__dirname, 'node_modules/antd')
+        // 你导入了antd所在的源码的位置
+        include: path.resolve('src/client'),
       },
     ]
   },
