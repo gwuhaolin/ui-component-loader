@@ -38,6 +38,7 @@ module.exports = {
             loader: 'ui-component-loader',
             options: {
               'lib': 'antd',
+              'camel2': '-',
               'style': 'style/index.css',
             }
           },
