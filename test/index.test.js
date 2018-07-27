@@ -160,6 +160,22 @@ import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
         libDir: 'es',
       },
     },
+    {
+      des: '支持组件换行后注释掉部分组件',
+      source: `import {
+ toast
+ // IDateRangePickerViewProps,
+} from '@mtfe/sjst-ui'`,
+      output: `import toast from '@mtfe/sjst-ui/es/Toast';import '@mtfe/sjst-ui/es/Toast/index.css';`,
+      options: {
+        lib: '@mtfe/sjst-ui',
+        libDir: 'es',
+        style: 'index.css',
+        componentDirMap: {
+          toast: 'Toast',
+        },
+      },
+    },
   ];
 
   testData.forEach(({des, source, output, options = {}}) => {
