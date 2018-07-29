@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const {replaceImport} = require('../lib/util');
+const {replaceImport,removeComment} = require('../lib/util');
 
 describe('util.js#replaceImport', function () {
 
@@ -22,7 +22,7 @@ describe('util.js#replaceImport', function () {
     {
       des: 'lib 命中,保留后面的;',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button';;`,
+      output: `import Button from 'antd/lib/Button';`,
       options: {
         lib: 'antd'
       },
@@ -63,7 +63,7 @@ describe('util.js#replaceImport', function () {
     {
       des: '使用 style',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/index.css';;`,
+      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/index.css';`,
       options: {
         lib: 'antd',
         style: 'index.css'
@@ -81,7 +81,7 @@ describe('util.js#replaceImport', function () {
     {
       des: '使用 相对路径的 style',
       source: `import {Button} from 'antd';`,
-      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/style/index.css';;`,
+      output: `import Button from 'antd/lib/Button';import 'antd/lib/Button/style/index.css';`,
       options: {
         lib: 'antd',
         style: './style/index.css'
@@ -140,7 +140,7 @@ import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
       output: `import * as React from 'react';
 import {Component} from 'react';
 import {svgQRCode} from '@mtfe/mcashier-components/es/Icon/svgs';
-import Form from '@mtfe/mcashier-components/es/Form';;
+import Form from '@mtfe/mcashier-components/es/Form';
 import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
       options: {
         lib: '@mtfe/mcashier-components',
@@ -165,6 +165,7 @@ import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
       source: `import {
  toast
  // IDateRangePickerViewProps,
+ /* Aa */
 } from '@mtfe/sjst-ui'`,
       output: `import toast from '@mtfe/sjst-ui/es/Toast';import '@mtfe/sjst-ui/es/Toast/index.css';`,
       options: {
@@ -190,3 +191,23 @@ import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
     });
   });
 });
+
+describe('util.js#removeComment',()=>{
+  it('removeComment',()=>{
+    const ret = removeComment(`import {
+  //a
+  // a
+  /*a*/
+  /*a
+  * a
+  * */
+  a
+} from 'a'
+`);
+    assert.equal(ret,`import {
+      
+  a
+} from 'a'
+`);
+  });
+})
