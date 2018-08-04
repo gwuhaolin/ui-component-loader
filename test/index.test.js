@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const {replaceImport,removeComment} = require('../lib/util');
+const {replaceImport, removeComment, tranCamel2} = require('../lib/util');
 
 describe('util.js#replaceImport', function () {
 
@@ -192,8 +192,8 @@ import {GoodsTO} from '@server/thrift/dist/GoodsModel_types';`,
   });
 });
 
-describe('util.js#removeComment',()=>{
-  it('removeComment',()=>{
+describe('util.js#removeComment', () => {
+  it('removeComment', () => {
     const ret = removeComment(`import {
   //a
   // a
@@ -204,10 +204,34 @@ describe('util.js#removeComment',()=>{
   a
 } from 'a'
 `);
-    assert.equal(ret,`import {
+    assert.equal(ret, `import {
       
   a
 } from 'a'
 `);
   });
-})
+});
+
+describe('util.js#tranCamel2', () => {
+  it('joinString is null', () => {
+    assert.equal(tranCamel2('InputItem'), 'InputItem');
+  });
+  it('joinString is -', () => {
+    assert.equal(tranCamel2('InputItem', '-'), 'input-item');
+  });
+  it('joinString is _', () => {
+    assert.equal(tranCamel2('InputItem', '_'), 'input_item');
+  });
+  it('joinString is blank str', () => {
+    assert.equal(tranCamel2('InputItem', ''), 'inputitem');
+  });
+  it('1', () => {
+    assert.equal(tranCamel2('Input', '_'), 'input');
+  });
+  it('3', () => {
+    assert.equal(tranCamel2('InputItemIcon', '_'), 'input_item_icon');
+  });
+  it('4', () => {
+    assert.equal(tranCamel2('InputItemIconButton', '_'), 'input_item_icon_button');
+  });
+});
