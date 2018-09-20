@@ -39,7 +39,7 @@ module.exports = {
             options: {
               'lib': 'antd',
               'camel2': '-',
-              'style': 'style/index.css',
+              'style': 'style/css.js',
             }
           },
         ],
