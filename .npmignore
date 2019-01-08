@@ -4,3 +4,4 @@ test
 .editorconfig
 .gitignore
 .travis.yml
+.idea
