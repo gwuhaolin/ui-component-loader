@@ -43,7 +43,7 @@ module.exports = {
             }
           },
         ],
-        // 你导入了antd所在的源码的位置
+        // the path you import antd
         include: path.resolve('src/client'),
       },
     ]
@@ -51,6 +51,24 @@ module.exports = {
 };
 ```
 > The order of loaders has no require, but the source code pass to ui-component-loader must use ES6 module syntax.
+
+If you have mutil package need to be spilt, can get options as a array like:
+```js
+{
+    loader: 'ui-component-loader',
+    options: [
+        {
+            'lib': 'antd',
+            'camel2': '-',
+            'style': 'style/css.js',
+        },
+        {
+            'lib': 'mui',
+        },
+        ...
+    ]
+}
+```
 
 ## Options
 - **lib**: library want to replace,value is name in npm.
