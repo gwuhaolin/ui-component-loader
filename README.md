@@ -56,17 +56,14 @@ If you have mutil package need to be spilt, can get options as a array like:
 ```js
 {
     loader: 'ui-component-loader',
-    options: [
-        {
-            'lib': 'antd',
-            'camel2': '-',
-            'style': 'style/css.js',
-        },
-        {
-            'lib': 'mui',
-        },
-        ...
-    ]
+    options: {
+         antd: {
+              'camel2': '-',
+              'style': 'style/css.js',
+         },
+         mui: {
+         },
+    }
 }
 ```
 

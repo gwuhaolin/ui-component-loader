@@ -2,7 +2,8 @@
   "name": "ui-component-loader-demo",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "dependencies": {
     "antd": "^3.7.3",

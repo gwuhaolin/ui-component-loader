@@ -15,7 +15,7 @@ module.exports = {
         use: [
           'ts-loader',
           {
-            loader: 'ui-component-loader',
+            loader: path.resolve(__dirname, '../lib'),
             options: {
               'lib': 'antd',
               'camel2': '-',
