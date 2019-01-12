@@ -1,6 +1,6 @@
 {
   "name": "ui-component-loader",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "main": "./lib/index.js",
   "engines": {
     "node": ">= 6.0.0"
